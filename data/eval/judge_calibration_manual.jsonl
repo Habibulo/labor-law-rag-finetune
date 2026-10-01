@@ -1,0 +1,20 @@
+{"qid": "precedent:226657#1|q0", "label": "no", "labeler": "assistant (manual read, 2026-09-27)", "note": "too generic: asks how to interpret any contract clause"}
+{"qid": "law:001872:22#0|q1", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "제22조②2: 열람·반환 요구 시 즉시"}
+{"qid": "decree:002249:71#0|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "수급기간 연기 신청"}
+{"qid": "precedent:133946#0|q1", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "전보 재량과 판단 기준"}
+{"qid": "law:001761:8#0|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "borderline: applies to all workplaces; exceptions are in the decree"}
+{"qid": "law:000122:2#0|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "근로자파견 = 사용사업주의 지휘·명령"}
+{"qid": "law:000130:37#1|q1", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "3년 이하 징역 또는 3천만원 이하 벌금"}
+{"qid": "law:001872:49#0|q1", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "임금채권 3년 시효"}
+{"qid": "precedent:136122#1|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "무허가 파견에도 직접고용간주 적용"}
+{"qid": "law:001872:21#0|q1", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "전차금 상계 금지"}
+{"qid": "precedent:601519#4|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "판결 확정 시 직접고용관계 성립"}
+{"qid": "decree:009842:2-2#0|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "보수 제외 = 비과세 근로소득"}
+{"qid": "law:001872:6#0|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "국적 이유 차별 금지"}
+{"qid": "precedent:165782#2|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "경업금지 위반 해고 정당"}
+{"qid": "decree:003793:35#0|q1", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "출퇴근 중 일상생활 필요 행위"}
+{"qid": "law:001760:37#0|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "시설물 결함으로 인한 사고"}
+{"qid": "decree:002249:71-2#0|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "대기기간 2주"}
+{"qid": "law:001872:6#0|q1", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "borderline: promotion discrimination is more specific in 남녀고용평등법 제10조"}
+{"qid": "law:009883:10#0|q0", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "퇴직금 3년 시효"}
+{"qid": "decree:003140:10#0|q1", "label": "yes", "labeler": "assistant (manual read, 2026-09-27)", "note": "6개월 미만 근로자는 육아휴직 적용 제외"}

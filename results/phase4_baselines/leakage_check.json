@@ -1,0 +1,25 @@
+{
+  "n_train_queries": 3631,
+  "n_test_queries": 337,
+  "train_groups": 1511,
+  "test_groups": 174,
+  "group_overlap": 0,
+  "chunk_id_overlap": 0,
+  "identical_chunk_text_overlap": 2,
+  "test_questions_near_duplicate_of_train": 0,
+  "test_queries_not_in_test_split": 0,
+  "test_doc_types": {
+    "law": 86,
+    "decree": 69,
+    "rule": 29,
+    "precedent": 153
+  },
+  "checks": {
+    "no shared article/case between train and test": true,
+    "no shared chunk id": true,
+    "no identical chunk text": false,
+    "no near-duplicate questions": true,
+    "all test queries are in the test split": true
+  },
+  "verdict": "FAIL"
+}

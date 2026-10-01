@@ -1,0 +1,51 @@
+seed: 42
+
+rules:
+  min_chars: 8
+  min_hangul_ratio: 0.7           # share of letters that are Hangul syllables (generator emitted Arabic once)
+  drop_if_chinese_chars: true     # CJK ideographs leaked from the generator
+  drop_if_article_number: true    # "제N조" copied from the source
+
+near_duplicate:
+  char_ngram: 3
+  jaccard_threshold: 0.8          # >= this is treated as the same question
+  split_priority: [test, val, train]   # on a cross-split duplicate, keep the higher-priority one
+
+round_trip:
+  # Rank of the source article/case (any of its chunks) under BM25 and the base embedding model.
+  # RECORDED ONLY, NOT USED TO DROP (decisions_log #33): inspection showed 19 of 20 dropped pairs
+  # were correct vocabulary-gap questions. Answerability is decided by the judge (judge_pairs.py).
+  top_k: 20                      # reported as "round_trip_pass" for the bias analysis
+  dense_model: intfloat/multilingual-e5-base
+  query_prefix: "query: "
+  passage_prefix: "passage: "
+
+inspect_dropped: 20
+
+judge:
+  apply_to: [train, val]        # test drafts are reviewed by a human instead
+  pairs_per_request: 10
+  keep_verdicts: ["yes"]        # MUST stay quoted: YAML 1.1 parses bare yes/no as booleans
+  # Different models from the question generators (3.5/3.1-flash-lite), so the judge is not
+  # grading its own output. Ordered by measured free capacity (2026-09-28): Groq gpt-oss-120b
+  # 1,000 req/day and answers in ~2s; gemma-4-31b-it frequently 503s; gemini-3.8/3.5-flash are
+  # capped at 20 requests/DAY on the free tier (quotaValue seen in the 429 body), so they go last.
+  # Groq first: its 200K tokens/day renew daily and it answers in ~2s. NVIDIA next: reliable
+  # (3/3 batches, 14-47s) but its 1,000 signup credits are one-time, so it fills Groq's gaps.
+  # gemma-4-31b-it often 500/503; the two Gemini flash models allow only 20 requests/day.
+  models: ["groq:openai/gpt-oss-120b", "nvidia:nvidia/nemotron-3-super-120b-a12b",
+           gemma-4-31b-it, gemini-3.8-flash, gemini-3.5-flash]
+  daily_quota_rest_hours: 6     # a model that hit its daily quota is benched this long, across restarts
+  # Groq's daily token budget is a ROLLING window and its error states a real wait ("21m5.76s"),
+  # so that is trusted. Gemini's daily error states a misleading 18s for a quota that resets at
+  # midnight PT, so any delay under this threshold is ignored in favour of the full rest above.
+  min_trusted_retry_s: 60
+  request_timeout_s: 90         # NVIDIA NIM can queue for minutes; fail over instead of hanging
+  temperature: 0.0
+  max_output_tokens: 4096
+  groq_max_output_tokens: 4096
+  max_retries: 6
+  # Groq's binding limit is ~8,000 tokens/min and a 10-pair judge request is ~4,500 tokens.
+  # Spacing calls to ~15s avoids most 429s, which would otherwise each burn one of the 1,000
+  # requests/day. The 429 handler still backs off using the server's own retry delay.
+  min_seconds_between_requests: 15

@@ -1,0 +1,51 @@
+snapshot_date: "2026-09-25"   # laws are pinned to the version in force on this date
+
+sources:
+  laws_repo: https://github.com/legalize-kr/legalize-kr
+  precedents_repo: https://github.com/legalize-kr/precedent-kr
+  cache_dir: .cache/repos     # git clones (gitignored); data/raw is the source of truth
+
+# Official names. Repo folder = name with spaces removed (legalize-kr convention).
+laws:
+  - 근로기준법
+  - 최저임금법
+  - 근로자퇴직급여 보장법
+  - 남녀고용평등과 일ㆍ가정 양립 지원에 관한 법률
+  - 기간제 및 단시간근로자 보호 등에 관한 법률
+  - 파견근로자 보호 등에 관한 법률
+  - 고용보험법
+  - 산업재해보상보험법
+  - 임금채권보장법
+  - 근로자참여 및 협력증진에 관한 법률
+  - 고용보험 및 산업재해보상보험의 보험료징수 등에 관한 법률
+
+law_kinds:          # file stem in legalize-kr -> doc_type
+  법률: law
+  시행령: decree
+  시행규칙: rule
+
+precedents:
+  courts: [대법원]
+  case_types: [민사, 일반행정, 형사]
+  min_date: "2008-01-01"
+  require_sections: [판시사항, 판결요지, 참조조문]
+  # Matched against 참조조문 with all whitespace removed. Old names included.
+  ref_law_patterns:
+    - 근로기준법
+    - 최저임금법
+    - 근로자퇴직급여보장법
+    - 남녀고용평등
+    - 기간제및단시간근로자보호등에관한법률
+    - 파견근로자보호등에관한법률
+    - 고용보험법
+    - 산업재해보상보험법
+    - 임금채권보장법
+    - 근로자참여및협력증진에관한법률
+    - 보험료징수등에관한법률
+  max_cases: 2000   # newest first if more candidates match
+
+parse:
+  include_addenda: false      # 부칙
+  include_deleted: false      # articles whose whole body is "삭제 <...>"
+  strip_hanja_annotations: true
+  precedent_full_text: false  # 판례내용 not included in text by default

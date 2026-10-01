@@ -1,0 +1,42 @@
+{
+  "kept_by_split": {
+    "test": 337,
+    "val": 424,
+    "train": 3631
+  },
+  "verdict_by_split": {
+    "val:yes": 424,
+    "val:partial": 14,
+    "val:no": 1,
+    "train:yes": 1155,
+    "train:partial": 27,
+    "train:no": 5,
+    "train:unjudged": 2476
+  },
+  "verdict_by_doc_type": {
+    "law:yes": 672,
+    "rule:yes": 245,
+    "rule:partial": 10,
+    "decree:yes": 444,
+    "law:partial": 18,
+    "decree:partial": 6,
+    "decree:no": 5,
+    "precedent:yes": 218,
+    "precedent:partial": 7,
+    "law:no": 1
+  },
+  "verdict_by_round_trip": {
+    "rt_pass:yes": 1489,
+    "rt_fail:yes": 90,
+    "rt_pass:partial": 38,
+    "rt_pass:no": 6,
+    "rt_fail:partial": 3
+  },
+  "judge_models": {
+    "gemini-3.8-flash": 130,
+    "groq:openai/gpt-oss-120b": 840,
+    "gemini-3.5-flash": 130,
+    "gemma-4-31b-it": 256,
+    "nvidia:nvidia/nemotron-3-super-120b-a12b": 270
+  }
+}

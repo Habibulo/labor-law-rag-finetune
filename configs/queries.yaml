@@ -1,0 +1,33 @@
+seed: 42
+
+split:
+  val_ratio: 0.10
+  test_ratio: 0.10
+  # Garbled formula-table articles never go to val/test (no reliable questions can be verified).
+  force_train_if: has_formula_table
+
+generation:
+  prompt_version: v1
+  # Tried in order; on 503/500 (overloaded), a bad response, or a used-up daily quota, the next
+  # model is used. Each model has its own free quota. Every question records model + seed.
+  # Probed 2026-09-26: 3.5-flash-lite and 3.1-flash-lite OK; 3.8-flash, 3.5-flash, gemma-4-31b-it
+  # often 503 (high demand); gemma-4-26b-a4b-it returned invalid JSON (excluded); 2.5-flash retired.
+  # "groq:" prefix = Groq API (needs GROQ_API_KEY). Probed 2026-09-26: gpt-oss-120b valid JSON and
+  # natural Korean (free: 1,000 req/day, 8,000 tokens/min); qwen3.8-27b leaked Chinese characters
+  # and wrong ids (excluded); Llama models skipped (license restricts training on outputs).
+  models: [gemini-3.5-flash-lite, gemini-3.1-flash-lite, gemini-3.8-flash, gemini-3.5-flash, gemma-4-31b-it,
+           "groq:openai/gpt-oss-120b"]
+  temperature: 0.9
+  max_output_tokens: 2048   # a 5-chunk answer is ~600 tokens; caps runaway repetition loops
+  groq_max_output_tokens: 4096   # gpt-oss counts its (low-effort) reasoning tokens in this budget
+  chunks_per_request: 5
+  max_questions:
+    train: 3
+    val: 3
+    test: 2        # test candidates are only drafts for human review (Phase 3.5)
+  # Free-tier limits change; check https://aistudio.google.com rate-limit page. 6s = max 10 requests/min.
+  min_seconds_between_requests: 6
+  max_retries: 6
+  daily_quota_rest_hours: 6
+  min_trusted_retry_s: 60
+  request_timeout_s: 90

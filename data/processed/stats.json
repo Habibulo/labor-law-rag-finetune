@@ -1,0 +1,43 @@
+{
+  "per_doc_type_chars": {
+    "law": {
+      "n": 843,
+      "min": 12,
+      "median": 233,
+      "p95": 1008,
+      "max": 2951
+    },
+    "decree": {
+      "n": 736,
+      "min": 29,
+      "median": 262.5,
+      "p95": 1213,
+      "max": 5266
+    },
+    "rule": {
+      "n": 457,
+      "min": 20,
+      "median": 259,
+      "p95": 1107,
+      "max": 3209
+    },
+    "precedent": {
+      "n": 507,
+      "min": 189,
+      "median": 1408,
+      "p95": 3529,
+      "max": 7668
+    }
+  },
+  "counters": {
+    "law_articles_deleted_excluded": 120,
+    "law_addenda_blocks_excluded": 33,
+    "law_articles_empty_text": 0,
+    "law_articles_with_formula_table": 10
+  },
+  "precedent_refs_total": 3108,
+  "precedent_refs_old_version": 627,
+  "precedent_refs_linked_to_corpus": 1587,
+  "precedents_with_at_least_one_link": 436,
+  "precedents_without_summary": 0
+}

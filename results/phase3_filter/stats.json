@@ -1,0 +1,31 @@
+{
+  "counts": {
+    "total": 4444,
+    "candidates": 4439,
+    "drop_too_short": 4,
+    "drop_chinese_chars": 1
+  },
+  "by_split": {
+    "test": {
+      "candidate": 337
+    },
+    "train": {
+      "candidate": 3663,
+      "too_short": 4,
+      "chinese_chars": 1
+    },
+    "val": {
+      "candidate": 439
+    }
+  },
+  "round_trip_pass_rate_top20": 0.9489,
+  "base_recall_at_1": {
+    "bm25": 0.4602,
+    "dense": 0.4801
+  },
+  "base_recall_at_20": {
+    "bm25": 0.859,
+    "dense": 0.8925
+  },
+  "note": "Recall here is over all candidate synthetic questions (all splits); indicative only, not the Phase 4 baseline (the test set is not human-verified yet)."
+}

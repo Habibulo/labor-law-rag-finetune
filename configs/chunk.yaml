@@ -1,0 +1,12 @@
+# Token lengths are measured with this tokenizer. multilingual-e5 and bge-m3 share the
+# XLM-RoBERTa vocabulary, so counts are identical for both.
+tokenizer: intfloat/multilingual-e5-base
+
+# e5 max input = 512 tokens. 480 leaves room for "passage: " + 2 special tokens.
+max_tokens: 480
+
+# Precedents: overlap between consecutive windows when a unit must be split.
+precedent_overlap_ratio: 0.12
+
+# Laws: when one 항 is split across chunks, repeat its lead sentence (if <= this many tokens).
+repeat_paragraph_head_max_tokens: 120

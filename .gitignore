@@ -1,0 +1,11 @@
+﻿__pycache__/
+*.pyc
+.venv/
+.env
+.cache/
+models/
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/SOURCE.md
+!data/raw/manifest.json
+.ipynb_checkpoints/

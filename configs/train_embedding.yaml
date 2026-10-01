@@ -1,0 +1,17 @@
+seed: 42
+base_model: intfloat/multilingual-e5-base
+output_dir: models/e5-base-labor-law
+
+# e5 was pretrained with these prefixes; they must match at training AND evaluation time.
+query_prefix: "query: "
+passage_prefix: "passage: "
+
+max_seq_length: 512
+epochs: 2
+learning_rate: 2.0e-5
+warmup_ratio: 0.1
+# CachedMultipleNegativesRankingLoss keeps a large effective batch (more in-batch negatives,
+# which is what MNRL learns from) while only `mini_batch_size` examples are on the GPU at once.
+batch_size: 64
+mini_batch_size: 8
+fp16: true

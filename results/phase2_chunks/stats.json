@@ -1,0 +1,52 @@
+{
+  "config": {
+    "tokenizer": "intfloat/multilingual-e5-base",
+    "max_tokens": 480,
+    "precedent_overlap_ratio": 0.12,
+    "repeat_paragraph_head_max_tokens": 120
+  },
+  "counters": {
+    "precedent_issue_paired": 345,
+    "precedent_single_unit": 162,
+    "precedent_units_window_split": 357
+  },
+  "per_doc_type": {
+    "law": {
+      "documents": 843,
+      "chunks": 939,
+      "documents_split": 72,
+      "tokens_min": 23,
+      "tokens_median": 161,
+      "tokens_p95": 440,
+      "tokens_max": 480
+    },
+    "decree": {
+      "documents": 736,
+      "chunks": 885,
+      "documents_split": 89,
+      "tokens_min": 37,
+      "tokens_median": 191,
+      "tokens_p95": 462,
+      "tokens_max": 480
+    },
+    "rule": {
+      "documents": 457,
+      "chunks": 526,
+      "documents_split": 52,
+      "tokens_min": 32,
+      "tokens_median": 184.0,
+      "tokens_p95": 448,
+      "tokens_max": 479
+    },
+    "precedent": {
+      "documents": 507,
+      "chunks": 1572,
+      "documents_split": 429,
+      "tokens_min": 64,
+      "tokens_median": 350.0,
+      "tokens_p95": 480,
+      "tokens_max": 480
+    }
+  },
+  "total_chunks": 3922
+}

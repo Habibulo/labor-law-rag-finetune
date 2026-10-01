@@ -1,0 +1,57 @@
+{
+  "groups": {
+    "decree": {
+      "test": 73,
+      "train": 590,
+      "val": 73
+    },
+    "law": {
+      "val": 84,
+      "train": 675,
+      "test": 84
+    },
+    "precedent": {
+      "val": 51,
+      "train": 405,
+      "test": 51
+    },
+    "rule": {
+      "train": 365,
+      "val": 46,
+      "test": 46
+    },
+    "total": {
+      "test": 254,
+      "train": 2035,
+      "val": 254
+    }
+  },
+  "chunks": {
+    "decree": {
+      "test": 93,
+      "train": 714,
+      "val": 78
+    },
+    "law": {
+      "val": 100,
+      "train": 748,
+      "test": 91
+    },
+    "precedent": {
+      "val": 176,
+      "train": 1257,
+      "test": 139
+    },
+    "rule": {
+      "train": 424,
+      "val": 50,
+      "test": 52
+    },
+    "total": {
+      "test": 375,
+      "train": 3143,
+      "val": 404
+    }
+  },
+  "forced_train_groups": 10
+}
