@@ -122,6 +122,9 @@ def main():
     ap.add_argument("--model-only", action="store_true")
     ap.add_argument("--space-only", action="store_true")
     ap.add_argument("--private", action="store_true")
+    ap.add_argument("--gradio", action="store_true",
+                    help="publish the live Gradio app from app/ instead of the free static page "
+                         "(needs a Hugging Face PRO subscription)")
     args = ap.parse_args()
 
     token = load_env().get("HF_TOKEN")
@@ -150,13 +153,20 @@ def main():
 
     if not args.model_only:
         repo_id = f"{args.user}/{SPACE_REPO}"
-        api.create_repo(repo_id, repo_type="space", space_sdk="gradio", exist_ok=True,
+        # Gradio/Docker Spaces require a PRO subscription (402 on free accounts); static Spaces
+        # are free for everyone, so the default demo is the precomputed page from app_static/.
+        sdk = "gradio" if args.gradio else "static"
+        folder = ROOT / ("app" if args.gradio else "app_static")
+        if not (folder / ("app.py" if args.gradio else "index.html")).exists():
+            sys.exit(f"{folder} is not built - run python app_static/build.py first")
+        api.create_repo(repo_id, repo_type="space", space_sdk=sdk, exist_ok=True,
                         private=args.private)
-        print(f"uploading Space from app/ to {repo_id} ...")
-        api.upload_folder(folder_path=str(ROOT / "app"), repo_id=repo_id, repo_type="space")
-        api.add_space_variable(repo_id, "FINETUNED_MODEL", f"{args.user}/{MODEL_REPO}")
+        print(f"uploading {sdk} Space from {folder.name}/ to {repo_id} ...")
+        api.upload_folder(folder_path=str(folder), repo_id=repo_id, repo_type="space",
+                          ignore_patterns=["build.py", "precompute.py", "__pycache__/*"])
+        if args.gradio:
+            api.add_space_variable(repo_id, "FINETUNED_MODEL", f"{args.user}/{MODEL_REPO}")
         print(f"  https://huggingface.co/spaces/{repo_id}")
-        print("  (first build takes a few minutes)")
 
 
 if __name__ == "__main__":

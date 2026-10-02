@@ -6,6 +6,11 @@
 ![Cost](https://img.shields.io/badge/cost-%240-blue)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
+**[▶ Live demo](https://huggingface.co/spaces/Khabib1304/labor-law-retrieval)** ·
+**[🤗 Model](https://huggingface.co/Khabib1304/e5-base-labor-law-ko)** ·
+[Results](results/phase4_baselines/metrics.json) ·
+[Decision log](docs/decisions_log.md)
+
 Fine-tuning an open Korean embedding model so that **everyday questions from workers** retrieve the
 **correct statute article or Supreme Court ruling**, with an honest before/after measurement.
 
@@ -220,8 +225,21 @@ Question generation and judging used free API tiers (Google AI Studio, Groq, NVI
 | legalize-kr repo structure/metadata | MIT (stated in their READMEs; no LICENSE file present) |
 | This code | MIT |
 
+## Demo
+
+[**huggingface.co/spaces/Khabib1304/labor-law-retrieval**](https://huggingface.co/spaces/Khabib1304/labor-law-retrieval)
+— type-to-filter comparison of both models over 10 showcase questions and 120 held-out test
+questions. Test questions show the **correct article**, so you can see which model found it.
+
+The results are **precomputed**: Hugging Face now requires a PRO subscription for Gradio/Docker
+Spaces, while static Spaces stay free, so both models were run offline over the same corpus and
+the page ships the output (`app_static/build.py`). A live Gradio version is in
+[`app/`](app/) and runs locally with `python app/app.py`, or on a PRO account via
+`python src/publish_hf.py --user <you> --gradio`.
+
 ## Status
 
-Phases 0–5 complete (data → chunking → query generation → filtering → embedding fine-tuning →
-evaluation). Not yet done: human-verified test set, hard-negative mining, Track B QLoRA
-generation, end-to-end RAG comparison, Hugging Face publication, Gradio demo.
+Phases 0–5 and publication complete: data → chunking → query generation → filtering →
+embedding fine-tuning → evaluation → Hub model + demo.
+Not yet done: human-verified test set, hard-negative mining, Track B QLoRA answer generation
+with citations and refusal, end-to-end RAG comparison.

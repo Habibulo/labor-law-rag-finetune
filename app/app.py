@@ -20,7 +20,7 @@ ASSETS = HERE / "assets"
 BASE_MODEL = os.environ.get("BASE_MODEL", "intfloat/multilingual-e5-base")
 _LOCAL_FT = HERE.parent / "models" / "e5-base-labor-law"
 FINETUNED_MODEL = os.environ.get(
-    "FINETUNED_MODEL", str(_LOCAL_FT) if _LOCAL_FT.exists() else "Habibulo/e5-base-labor-law-ko")
+    "FINETUNED_MODEL", str(_LOCAL_FT) if _LOCAL_FT.exists() else "Khabib1304/e5-base-labor-law-ko")
 TOP_K = 5
 
 CHUNKS = json.loads((ASSETS / "chunks.json").read_text(encoding="utf-8"))

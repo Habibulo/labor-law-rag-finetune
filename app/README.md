@@ -35,4 +35,4 @@ hf upload <user>/<space-name> . . --repo-type=space
 ```
 
 Set `FINETUNED_MODEL` to the Hub id of the fine-tuned model (defaults to
-`Habibulo/e5-base-labor-law-ko`).
+`Khabib1304/e5-base-labor-law-ko`).
