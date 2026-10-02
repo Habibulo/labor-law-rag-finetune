@@ -11,6 +11,10 @@ Every number below comes from a script in this repo. Sources:
 **Project title:** Korean Labor-Law Retrieval — Domain-Adapted Embedding Fine-Tuning
 *(Python, PyTorch, sentence-transformers, Hugging Face, BM25/Kiwi)*
 
+**Links:** [demo](https://huggingface.co/spaces/Khabib1304/labor-law-retrieval) ·
+[model](https://huggingface.co/Khabib1304/e5-base-labor-law-ko) ·
+[code](https://github.com/Habibulo/labor-law-rag-finetune)
+
 - Fine-tuned `multilingual-e5-base` on 3,631 domain question/passage pairs, raising **Recall@1 from
   0.513 to 0.657 (+28.1% relative)** and **NDCG@10 from 0.711 to 0.815** on 335 held-out queries,
   with non-overlapping 95% bootstrap confidence intervals.
