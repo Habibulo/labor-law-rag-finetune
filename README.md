@@ -1,5 +1,11 @@
 # 근로 Q&A 도메인 적응 — Fine-Tuning a Korean Embedding Model for Labor-Law Retrieval
 
+![Recall@1](https://img.shields.io/badge/Recall%401-0.513%20%E2%86%92%200.657-brightgreen)
+![NDCG@10](https://img.shields.io/badge/NDCG%4010-0.711%20%E2%86%92%200.815-brightgreen)
+![Training](https://img.shields.io/badge/training-3.2%20min%20on%20RTX%205060-blue)
+![Cost](https://img.shields.io/badge/cost-%240-blue)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
 Fine-tuning an open Korean embedding model so that **everyday questions from workers** retrieve the
 **correct statute article or Supreme Court ruling**, with an honest before/after measurement.
 
@@ -28,9 +34,10 @@ Recall@1을 0.513 → 0.657 (상대 +28.1%)로 향상시켰으며, 전 과정을
 | **e5-base fine-tuned (this work)** | **0.657 [0.606–0.707]** | **0.925** | **0.952 [0.928–0.973]** | **0.769** | **0.815 [0.785–0.847]** |
 | Hybrid RRF (BM25 + fine-tuned) | 0.606 [0.552–0.657] | 0.866 | 0.922 [0.892–0.949] | 0.720 | 0.769 [0.735–0.804] |
 
+![Retrieval comparison with 95% bootstrap confidence intervals](results/phase4_baselines/comparison.png)
+
 Reproduce: `python src/eval_retrieval.py --model models/e5-base-labor-law --name "e5-base FINE-TUNED"`
-Raw numbers: [results/phase4_baselines/metrics.json](results/phase4_baselines/metrics.json) ·
-chart: [comparison.png](results/phase4_baselines/comparison.png)
+Raw numbers: [results/phase4_baselines/metrics.json](results/phase4_baselines/metrics.json)
 
 **Two findings worth noting:**
 1. The fine-tuned dense model **beats hybrid BM25+dense retrieval**. Domain adaptation closed the

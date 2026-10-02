@@ -1,0 +1,5 @@
+﻿gradio==6.29.0
+sentence-transformers==6.1.0
+torch==2.11.0
+numpy==2.4.6
+
